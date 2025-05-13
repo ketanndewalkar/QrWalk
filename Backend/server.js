@@ -24,8 +24,8 @@ app.post("/get-form-data", (req, res) => {
     last,
     email,
     phone,
-    businessName,
-    businessCategory,
+    companyName,
+    companyCategory,
     country,
     description,
     address,
@@ -51,8 +51,8 @@ app.post("/get-form-data", (req, res) => {
     <p style="margin: 12px 0;"><strong>Name:</strong> ${first} ${middle} ${last}</p>
     <p style="margin: 12px 0;"><strong>Email:</strong> ${email}</p>
     <p style="margin: 12px 0;"><strong>Phone Number:</strong> ${phone}</p>
-    <p style="margin: 12px 0;"><strong>Business Name:</strong> ${businessName}</p>
-    <p style="margin: 12px 0;"><strong>Business Category:</strong> ${businessCategory}</p>
+    <p style="margin: 12px 0;"><strong>Company Name:</strong> ${companyName}</p>
+    <p style="margin: 12px 0;"><strong>Company Category:</strong> ${companyCategory}</p>
     <p style="margin: 12px 0;"><strong>Country:</strong> ${country}</p>
     <p style="margin: 12px 0;"><strong>Company Address:</strong><br><span style="color: #333;">${address}</span></p>
     <p style="margin: 12px 0;"><strong>Company Description:</strong><br><span style="color: #333;">${description}</span></p>

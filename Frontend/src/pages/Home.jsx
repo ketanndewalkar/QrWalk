@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Landinglogo from "../assests/landinglogo.png";
 import Landinglogo1 from "../assests/landinglogo1.png";
 import Char from "../assests/image1.png";
@@ -15,8 +15,41 @@ import Delivery from "../assests/delivery.png";
 import Chat from "../assests/chat.png";
 import Last from "../assests/last.png";
 import { Link } from "react-router-dom";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const Home = () => {
+  const move = useRef(null);
+  useEffect(() => {
+    const handleWheel = (event) => {
+      if (event.deltaY > 0) {
+        gsap.to(move.current, {
+          duration: 10,
+          repeat: -1,
+          transform: "translateX(-100%)",
+          delay: 0.5,
+          // right:"-100%",
+          ease: "none",
+        });
+      } else {
+        gsap.to(move.current, {
+          duration: 10,
+          delay: 0.5,
+          repeat: -1,
+          transform: "translateX(100%)",
+          ease: "none",
+        });
+      }
+    };
+
+    window.addEventListener("wheel", handleWheel);
+
+    // Cleanup when the component unmounts
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
+
   return (
     <div className="w-full h-fit  border-black z-9 relative pt-35">
       <div className=" w-full h-full">
@@ -56,13 +89,16 @@ const Home = () => {
         <h1 className="w-full font-bold text-red-500 mt-40 text-center text-4xl">
           20+ Brands Join
         </h1>
-        <div className="w-full h-50 flex items-center mt-10 gap-9 px-3">
+        <div
+          className="w-full h-50 flex items-center mt-10 gap-20 px-3"
+          ref={move}
+        >
           <img src={Eatzze} className="h-[94%] scale-90" />
           <img src={Eatclub} className="h-[94%] scale-90" />
           <img src={Internzze} className="h-[94%] scale-90" />
           <img src={Meesho} className="h-[94%] scale-90" />
           <img src={Mikava} className="h-[94%] scale-90" />
-          <img src={Car} className="h-[94%] scale-90" />
+          <img src={Car} className="h-[94%] scale-90 bg-transparent" />
         </div>
         <div className="w-screen h-fit border-2 mt-30 relative bg-[#303030] overlfow-hidden">
           <img
@@ -85,68 +121,64 @@ const Home = () => {
                 {/* Cost-Effective */}
                 <div className="bg-[#3a3a3a] rounded-lg p-4 col-span-1 row-span-1">
                   <h3 className="text-orange-400 text-xl font-bold mb-2">
-                    Cost-Effective
+                    Step 1: Place QR Codes
                   </h3>
-                  <p className="text-white text-sm">
-                    One scan takes users straight to your product or platform
-                    QRWalk is a smartstreet-level and the advertising platform
-                    that One scan takes users straight to your product.
+                  <p className="text-white text-sm tracking-widest">
+                    Set up QR codes at interesting points along a trail, path,
+                    or indoor space like parks, museums, schools, or city
+                    streets
                   </p>
                 </div>
 
                 {/* High Visibility */}
                 <div className="bg-[#3a3a3a] rounded-lg p-4 col-span-1 row-span-2">
                   <h3 className="text-orange-400 text-xl font-bold mb-2">
-                    High Visibility
+                    Step 3: Show Engaging Content
                   </h3>
-                  <p className="text-white text-sm">
-                    One scan takes users straight to your product or platform
-                    QRWalk is a smartstreet-level and the advertising platform
-                    that One scan takes users straight to your product or...
+                  <p className="text-white text-sm tracking-widest text-center leading-10">
+                    Each QR code opens something interactive like:
+                    <br />
+                    A video or audio guide
+                    <br />
+                    A short story or fun fact
+                    <br />
+                    A game or quiz
+                    <br />
+                    A coupon or reward
+                    <br />A map or direction
                   </p>
                 </div>
 
                 {/* Real-Time Analytics */}
                 <div className="bg-[#3a3a3a] rounded-lg p-4 col-span-1 row-span-1">
                   <h3 className="text-orange-400 text-xl font-bold mb-2">
-                    Real-Time Analytics
+                    Step 4: Learn & Enjoy
+
                   </h3>
-                  <p className="text-white text-sm">
-                    One scan takes users straight to your product or platform
-                    QRWalk is a smartstreet-level and the advertising
-                    platform...
+                  <p className="text-white text-sm tracking-widest">
+                    Visitors explore while learning, playing, or discovering new things making every walk more fun and meaningful.
                   </p>
                 </div>
 
                 {/* CAC */}
                 <div className="bg-[#3a3a3a] rounded-lg p-4 col-span-1 row-span-1">
                   <h3 className="text-orange-400 text-xl font-bold mb-2">
-                    CAC
+                    Step 2: Scan with a Phone
                   </h3>
-                  <p className="text-white text-sm">
-                    One scan takes users straight to your product or platform
-                    QRWalk is a smartstreet-level and the advertising
-                    platform...
+                  <p className="text-white text-sm tracking-widest">
+                    Visitors scan the QR codes using their smartphone camera. No
+                    app is needed — just point and scan.
                   </p>
                 </div>
 
                 {/* Multi-brand Banners */}
                 <div className="bg-[#3a3a3a] rounded-lg p-4 col-span-1 row-span-1">
                   <h3 className="text-orange-400 text-xl font-bold mb-2">
-                    Multi-brand Banners
+                    Share & Come Back
                   </h3>
-                  <p className="text-white text-sm">
-                    One scan takes users straight to your product or platform
-                    QRWalk is a smartstreet-level and the advertising
-                    platform...
+                  <p className="text-white text-sm tracking-widest">
+                    Visitors can share their experience on social media or with friends and revisit the trail for new content, seasonal updates, or special events.
                   </p>
-                </div>
-
-                {/* Instant Engagement */}
-                <div className="bg-[#3a3a3a] rounded-lg p-4 col-span-1 row-span-2 absolute top-">
-                  <h3 className="text-orange-400 text-xl font-bold mb-2">
-                    Instant Engagement
-                  </h3>
                 </div>
               </div>
             </div>
@@ -191,12 +223,16 @@ const Home = () => {
             visibility paired with instant digital engagement. Whether you're a
             startup looking for growth or an established brand wanting more
             eyes, QRWalk brings you closer to real users in real time.
-            <br/>
-            
-            <br/>
-            <Link to="/contact-page" className="px-6 py-3 border-2 rounded-lg text-red-500 border-red-500 font-semibold hover:cursor-pointer">Contact with Us</Link>
+            <br />
+            <br />
+            <Link
+              to="/contact-page"
+              className="px-6 py-3 border-2 rounded-lg text-red-500 border-red-500 font-semibold hover:cursor-pointer"
+            >
+              Contact with Us
+            </Link>
           </p>
-          <img src={Last} className="w-120 aspect-[16/9]"/>
+          <img src={Last} className="w-120 aspect-[16/9]" />
         </div>
       </div>
     </div>

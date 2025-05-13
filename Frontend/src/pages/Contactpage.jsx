@@ -7,8 +7,8 @@ const Contactpage = () => {
     last: "",
     email: "",
     phone: "",
-    businessName: "",
-    businessCategory: "",
+    companyName: "",
+    companyCategory: "",
     country: "",
     address: "",
     description: "",
@@ -24,7 +24,7 @@ const Contactpage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(!formdata.first || !formdata.middle || !formdata.last || !formdata.email || !formdata.phone || !formdata.businessName || !formdata.businessCategory || !formdata.country || !formdata.address || !formdata.description || !formdata.message) {
+    if(!formdata.first || !formdata.middle || !formdata.last || !formdata.email || !formdata.phone || !formdata.companyName || !formdata.companyCategory || !formdata.country || !formdata.address || !formdata.description || !formdata.message) {
       alert("Please fill all the fields");
       return;
     }
@@ -53,7 +53,7 @@ const Contactpage = () => {
         CONTACT WITH PAGE
       </h1>
       <div className="w-full h-full p-15 pt-10">
-        <div className="w-full h-full rounded-[20px] border border-white/20 bg-white/10 backdrop-blur-md shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] px-20 py-10">
+        <div className="w-full h-full rounded-[20px] border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] px-20 py-10 bg-[#ffffffa2]">
           <div className="w-full h-full ">
             <div className=" flex flex-col items-start justify-center">
               <div className="w-full h-fit flex items-center gap-10">
@@ -124,28 +124,28 @@ const Contactpage = () => {
               </div>
               <br />
               <div className="w-full h-fit flex mt-5 gap-10">
-                <label for="businessName" class="text-[1.2rem] w-1/2">
-                  Business Name :<br />
+                <label for="companyName" class="text-[1.2rem] w-1/2">
+                  Company Name :<br />
                   <input
                     type="text"
-                    id="businessName"
-                    name="businessName"
-                    value={formdata.businessName}
+                    id="companyName"
+                    name="companyName"
+                    value={formdata.companyName}
                     onChange={handleChange}
-                    placeholder="Enter your Business Name"
+                    placeholder="Enter your Company Name"
                     class="px-4 py-2 border border-[#999ea3] rounded-md focus:outline-none w-full mt-3"
                   />
                 </label>
 
                 <label
-                  for="businessCategory"
+                  for="companyCategory"
                   class="text-[1.2rem] h-full w-1/2 "
                 >
-                  Business Category :<br />
+                  Company Category :<br />
                   <select
-                    id="businessCategory"
-                    name="businessCategory"
-                    value={formdata.businessCategory}
+                    id="companyCategory"
+                    name="companyCategory"
+                    value={formdata.companyCategory}
                     onChange={handleChange}
                     class="px-4 py-2 border border-[#999ea3] rounded-md focus:outline-none w-full mt-3"
                   >
@@ -164,7 +164,7 @@ const Contactpage = () => {
                       Media & Entertainment
                     </option>
                     <option value="Real Estate">Real Estate</option>
-                    <option value="legal Services">Legal Services</option>
+                    <option value="Legal Services">Legal Services</option>
                     <option value="Marketing & Advertising">
                       Marketing & Advertising
                     </option>
