@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import Loader from "../assests/tube-spinner.svg";
+import { AppContext } from "../context/context";
 
 const Contactpage = () => {
+  const {status , setstatus , setpopshow} = useContext(AppContext)
+  const [loader, setloader] = useState(false)
   const [formdata, setformdata] = useState({
     first: "",
     middle: "",
@@ -21,32 +25,66 @@ const Contactpage = () => {
       [name]: value,
     }));
   };
-
+  const resetform = () => (setformdata({
+    first: "",
+    middle: "",
+    last: "",
+    email: "",
+    phone: "",
+    companyName: "",
+    companyCategory: "",
+    country: "",
+    address: "",
+    description: "",
+    message: "",
+  }));
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(!formdata.first || !formdata.middle || !formdata.last || !formdata.email || !formdata.phone || !formdata.companyName || !formdata.companyCategory || !formdata.country || !formdata.address || !formdata.description || !formdata.message) {
+    if (
+      !formdata.first ||
+      !formdata.middle ||
+      !formdata.last ||
+      !formdata.email ||
+      !formdata.phone ||
+      !formdata.companyName ||
+      !formdata.companyCategory ||
+      !formdata.country ||
+      !formdata.address ||
+      !formdata.description ||
+      !formdata.message
+    ) {
       alert("Please fill all the fields");
       return;
     }
     try {
-    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/get-form-data`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formdata),
-    })
-
-    const result = await res.json();
-    console.log(result.msg);
-  
+      setloader(true);
+      const res = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/get-form-data`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formdata),
+        }
+      );
+      setstatus(res.status)
+      setloader(false);
+      setpopshow(true);
+      resetform();
     } catch (error) {
-      console.log(error);
+      console.error("Error:", error);
+      setloader(false);
+      setstatus(500)
+      setpopshow(true);
     }
-    
-    
-  }
-
+  };
+  useEffect(()=>{
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  },[])
   return (
     <div className="w-full h-fit  border-black z-9 relative pt-35 ">
       <h1 className="w-full font-bold text-red-700 text-center text-3xl">
@@ -242,9 +280,13 @@ const Contactpage = () => {
                 />
               </label>
 
-              <button className="px-6 py-3 mt-5 bg-red-400 hover:cursor-pointer" onClick={handleSubmit}>
+              {!loader?<button
+                className="px-6 py-3 mt-5 bg-red-400 hover:cursor-pointer"
+                onClick={handleSubmit}
+              >
                 <b className="text-white font-bold text-[1.2rem]">Submit</b>
-              </button>
+              </button>:
+              <img src={Loader} className="w-10 h-10 ml-9 mt-5" />}
             </div>
           </div>
         </div>

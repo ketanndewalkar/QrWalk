@@ -17,6 +17,8 @@ import Last from "../assests/last.png";
 import { Link } from "react-router-dom";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import Landinglogo3 from "../assests/landinglogo3.png";
+import Landinglogo4 from "../assests/landinglogo4.png";
 
 const Home = () => {
   const move = useRef(null);
@@ -51,7 +53,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="w-full h-fit  border-black z-9 relative pt-35">
+    <div className="w-full h-fit  border-black z-9 relative pt-25">
       <div className=" w-full h-full">
         <h1 className="w-full h-fit text-[40px] font-bold text-center pt-9 leading-12 ">
           "Where the Streets Meet the Screen
@@ -77,11 +79,11 @@ const Home = () => {
             they scan and instantly connect with your digital platform app,
             website, product, or offer.
           </p>
-          <div className="h-120  flex items-center justify-end w-fit relative">
+          <div className="h-120  flex items-center justify-end w-50vw md:w-20vw relative">
             <img src={Landinglogo} className="h-full align-right" />
             <img
               src={Char}
-              className="absolute bottom-0 right-[80%] scale-170 mb-4"
+              className="absolute bottom-0 right-[70%] scale-170 mb-4"
             />
             <img src={Qr} className="h-[20%] absolute bottom-70 right-[90%]" />
           </div>
@@ -100,10 +102,13 @@ const Home = () => {
           <img src={Mikava} className="h-[94%] scale-90" />
           <img src={Car} className="h-[94%] scale-90 bg-transparent" />
         </div>
+        <div className="w-screen h-screen flex justify-center items-center mt-20 drop-shadow-[0_6px_6px_rgba(0,0,0,0.15)]" >
+          <img src={Landinglogo3} className="h-screen w-full"/>
+        </div>
         <div className="w-screen h-fit border-2 mt-30 relative bg-[#303030] overlfow-hidden">
           <img
             src={Landinglogo1}
-            className="absolute right-0 bottom-0 h-150 z-7"
+            className="absolute right-0 bottom-0 h-120 z-7"
           />
           <div
             className="w-full h-full absolute top-0 left-[60%]"
@@ -187,31 +192,34 @@ const Home = () => {
         <h1 className="w-full font-bold text-red-500 mt-40 text-center text-4xl">
           Ideal For
         </h1>
-        <div className=" w-full h-80 mt-16 flex items-center justify-center gap-32 px-3">
-          <div className="w-70 border-2 h-full rounded-lg flex items-center justify-center flex-col px-2 gap-6">
+        <div className=" w-full h-80 mt-16 flex items-center justify-center gap-18 px-3">
+          <div className="w-70 border-2 h-full border-gray-400 flex items-center justify-center flex-col px-2 gap-6 bg-white rounded-2xl shadow-xl p-6 max-w-md m-4 transition-transform hover:shadow-2xl hover:-translate-y-1">
             <img src={Pc} className="" />
             <h1 className="font-bold text-3xl w-full text-center">
               App Based Startup
             </h1>
           </div>
-          <div className="w-70 border-2 h-full rounded-lg flex items-center justify-center flex-col px-2 gap-6">
+          <div className="w-70 border-2 h-full border-gray-400 flex items-center justify-center flex-col px-2 gap-6 bg-white rounded-2xl shadow-xl p-6 max-w-md m-4 transition-transform hover:shadow-2xl hover:-translate-y-1">
             <img src={Ecomerce} className="" />
             <h1 className="font-bold text-3xl w-full text-center">
               E-commerce platforms
             </h1>
           </div>
-          <div className="w-70 border-2 h-full rounded-lg flex items-center justify-center flex-col px-2 gap-6">
+          <div className="w-70 border-2 h-full border-gray-400 flex items-center justify-center flex-col px-2 gap-6 bg-white rounded-2xl shadow-xl p-6 max-w-md m-4 transition-transform hover:shadow-2xl hover:-translate-y-1">
             <img src={Delivery} className="" />
             <h1 className="font-bold text-3xl w-full text-center">
               Food delivery & D2C brands
             </h1>
           </div>
-          <div className="w-70 border-2 h-full rounded-lg flex items-center justify-center flex-col px-2 gap-6">
+          <div className="w-70 border-2 h-full border-gray-400 flex items-center justify-center flex-col px-2 gap-6 bg-white rounded-2xl shadow-xl p-6 max-w-md m-4 transition-transform hover:shadow-2xl hover:-translate-y-1">
             <img src={Chat} className="" />
             <h1 className="font-bold text-3xl w-full text-center">
               Local-to-digital businesses
             </h1>
           </div>
+        </div>
+        <div className="w-screen h-screen flex justify-center items-center mt-20" >
+          <img src={Landinglogo4} className="h-screen"/>
         </div>
         <h1 className="w-full font-bold text-red-500 mt-40 text-center text-4xl">
           Want Your Brand on the Next QRwalk?
@@ -228,6 +236,7 @@ const Home = () => {
             <Link
               to="/contact-page"
               className="px-6 py-3 border-2 rounded-lg text-red-500 border-red-500 font-semibold hover:cursor-pointer"
+              
             >
               Contact with Us
             </Link>
